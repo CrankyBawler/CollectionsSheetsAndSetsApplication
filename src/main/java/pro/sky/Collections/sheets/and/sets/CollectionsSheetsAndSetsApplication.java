@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CollectionsSheetsAndSetsApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CollectionsSheetsAndSetsApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CollectionsSheetsAndSetsApplication.class, args);
+    }
 
 }

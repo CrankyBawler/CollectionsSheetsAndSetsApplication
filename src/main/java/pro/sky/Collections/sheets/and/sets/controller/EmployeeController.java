@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 @RestController
-@RequestMapping ("/employee")
+@RequestMapping("/employee")
 public class EmployeeController {
 
     private final EmployeeService service;
@@ -24,10 +24,12 @@ public class EmployeeController {
     public Employee addEmployee(@RequestParam String firstName, @RequestParam String lastName) {
         return service.add(firstName, lastName);
     }
+
     @GetMapping("/remove")
     public Employee removeEmployee(@RequestParam String firstName, @RequestParam String lastName) {
         return service.remove(firstName, lastName);
     }
+
     @GetMapping("/find")
     public Employee findEmployee(@RequestParam String firstName, @RequestParam String lastName) {
         return service.find(firstName, lastName);
