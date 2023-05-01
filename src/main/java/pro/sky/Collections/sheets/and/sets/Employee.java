@@ -2,6 +2,7 @@ package pro.sky.Collections.sheets.and.sets;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class Employee {
@@ -20,6 +21,8 @@ public class Employee {
     public String getLastName() {
         return lastName;
     }
+    public String getFullName() { return firstName + " " + lastName;}
+
 
     @Override
     public boolean equals(Object o) {
