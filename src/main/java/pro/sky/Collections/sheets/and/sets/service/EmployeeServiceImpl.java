@@ -9,10 +9,46 @@ import java.util.*;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-    private final Map<String, Employee> employees;
+    private Map<String, Employee> employees;
 
     public EmployeeServiceImpl() {
-        this.employees = new HashMap<>();
+        this.employees = new HashMap<>((Map.of(
+                "Гуляев",
+                new Employee("Тихон",
+                        "Гуляев",
+                        56_272, 4),
+                "Шашков",
+                new Employee("Савелий",
+                        "Шашков",
+                        29_104, 1),
+                        "Николаев",
+                new Employee("Остап",
+                        "Николаев",
+                        56_153, 3 ),
+                "Шаров",
+                new Employee("Алексей",
+                        "Шаров",
+                        42_883, 3),
+                "Вишнякова",
+                new Employee("Дарина",
+                        "Вишнякова",
+                        96_463, 1),
+                "Калашникова",
+                new Employee("Астра",
+                        "Калашникова",
+                        85_946, 2),
+                "Беспалова",
+                new Employee("Роксана",
+                        "Беспалова",
+                        44_277, 2),
+                "Лазарева",
+                new Employee("Хильда",
+                        "Лазарева",
+                        69_719, 5),
+                "Уварова",
+                new Employee("Дана",
+                        "Уварова",
+                        27_679, 5))));
     }
 
     @Override
@@ -47,6 +83,23 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Collection<Employee> findAll() {
         return Collections.unmodifiableCollection(employees.values());
     }
+    @Override
+    public List <Employee> maxSalaryDepartment(Integer department) {
+        List<Employee> result = new ArrayList<>();
+        int a = 0;
+        for (Employee employe : employees.values()) {
+            if (employe.maxSalaryDepartment().contains(department)) {
+                if (employe.getSalary() >= a) {
+                    a = employe.getSalary();
 
+
+                    //        }
+                    //    }
+                    //    System.out.println("Максимальная заработная плата  в отделе " + department + " составляет " + a + " рублей, у сторудника " + b);
+                    //    return a;
+            }
+        }
+
+        }
 
 }
