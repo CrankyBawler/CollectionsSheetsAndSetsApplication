@@ -5,10 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.Collections.sheets.and.sets.Employee;
+import pro.sky.Collections.sheets.and.sets.service.EmployeeAlreadyAddedException;
 import pro.sky.Collections.sheets.and.sets.service.EmployeeService;
+import pro.sky.Collections.sheets.and.sets.service.EmployeeStorageIsFullException;
 
 import java.util.Collection;
-import java.util.Collections;
 
 @RestController
 @RequestMapping("/employee")
@@ -21,8 +22,8 @@ public class EmployeeController {
     }
 
     @GetMapping("/add")
-    public Employee addEmployee(@RequestParam String firstName, @RequestParam String lastName) {
-        return service.add(firstName, lastName);
+    public Employee addEmployee(@RequestParam String firstName, @RequestParam String lastName, int salary, int department) throws EmployeeAlreadyAddedException, EmployeeStorageIsFullException {
+        return service.add(firstName, lastName, salary, department);
     }
 
     @GetMapping("/remove")
