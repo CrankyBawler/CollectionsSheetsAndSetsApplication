@@ -1,10 +1,14 @@
 package pro.sky.Collections.sheets.and.sets.service;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import pro.sky.Collections.sheets.and.sets.Employee;
 import pro.sky.Collections.sheets.and.sets.exception.EmployeeNotFoundException;
+import pro.sky.Collections.sheets.and.sets.exception.InvalidInputException;
 
 import java.util.*;
+
+import static org.apache.commons.lang3.StringUtils.*;
 
 @Service
 public class EmployeeService {
@@ -55,6 +59,7 @@ public class EmployeeService {
         if (employees.size() > MAX_SIZE) {
             throw new EmployeeStorageIsFullException();
         }
+        validateInput(firstName, lastName);
         var key = (firstName + "_" + lastName).toLowerCase();
         if (employees.containsKey(key)) {
             throw new EmployeeAlreadyAddedException();
@@ -66,6 +71,7 @@ public class EmployeeService {
     }
 
     public Employee remove(String firstName, String lastName) {
+        validateInput(firstName, lastName);
         var key = (firstName + "_" + lastName).toLowerCase();
         var removed = employees.remove(key);
         if (removed == null) {
@@ -75,6 +81,8 @@ public class EmployeeService {
     }
 
     public Employee find(String firstName, String lastName) {
+        validateInput(firstName, lastName);
+
         var key = (firstName + "_" + lastName).toLowerCase();
         var employee = employees.get(key);
         if (employee == null) {
@@ -90,5 +98,12 @@ public class EmployeeService {
     public Collection<Employee> getEmployees() {
         return employees.values();
     }
+
+    private void validateInput(String firstName, String lastName) {
+        if (!(isAlpha(firstName) && isAlpha(lastName))) {
+            throw new InvalidInputException();
+        }
+    }
 }
+
 
