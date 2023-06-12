@@ -2,7 +2,6 @@ package pro.sky.Collections.sheets.and.sets.service;
 
 import org.springframework.stereotype.Service;
 import pro.sky.Collections.sheets.and.sets.Employee;
-import pro.sky.Collections.sheets.and.sets.service.EmployeeService;
 
 import java.util.*;
 import java.util.function.Function;
@@ -16,8 +15,8 @@ public class DepartmentService {
     private final EmployeeService employeeService;
 
     public DepartmentService(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
+      this.employeeService = employeeService;
+  }
 
     public Employee max(int dept) {
         return employeeService.getEmployees()

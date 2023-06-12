@@ -1,9 +1,6 @@
 package pro.sky.Collections.sheets.and.sets.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pro.sky.Collections.sheets.and.sets.Employee;
 import pro.sky.Collections.sheets.and.sets.service.DepartmentService;
 
@@ -21,6 +18,11 @@ public class DepartmentController {
         this.service = service;
     }
 
+    @GetMapping(value = "/{id}/employees")
+    public Collection<Employee> allByDept(@PathVariable(value = "id") int Id) {
+        return service.allByDept(Id);
+    }
+
     @GetMapping("/max-salary")
     public Employee max(@RequestParam int departmentId) {
         return service.max(departmentId);
@@ -31,10 +33,7 @@ public class DepartmentController {
         return service.min(departmentId);
     }
 
-    @GetMapping(value = "/all", params = "departmentId")
-    public Collection<Employee> allByDept(@RequestParam int departmentId) {
-        return service.allByDept(departmentId);
-    }
+
 
     @GetMapping("/all")
     public Map<Integer, List<Employee>> all() {

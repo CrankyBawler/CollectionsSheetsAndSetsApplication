@@ -10,14 +10,16 @@ public class Employee {
 
     private final String firstName;
     private final String lastName;
-    private final int department;
     private final int salary;
+    private final int department;
+
 
     public Employee(String firstName, String lastName, int department, int salary) {
         this.firstName = capitalize(firstName.toLowerCase());
         this.lastName = capitalize(lastName.toLowerCase());
-        this.department = department;
         this.salary = salary;
+        this.department = department;
+
     }
 
     public String getFirstName() {
