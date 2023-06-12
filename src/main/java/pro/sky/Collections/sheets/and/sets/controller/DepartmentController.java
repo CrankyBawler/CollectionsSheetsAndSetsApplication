@@ -23,6 +23,12 @@ public class DepartmentController {
         return service.allByDept(Id);
     }
 
+    @GetMapping(value = "/{id}/salary/sum")
+    public Collection<Employee> sum(@PathVariable(value = "id") int Id) {
+        return (Collection<Employee>) service.sum(Id);
+    }
+
+
     @GetMapping("/max-salary")
     public Employee max(@RequestParam int departmentId) {
         return service.max(departmentId);
