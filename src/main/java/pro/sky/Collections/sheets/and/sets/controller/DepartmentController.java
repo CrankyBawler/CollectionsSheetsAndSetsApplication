@@ -23,25 +23,25 @@ public class DepartmentController {
         return service.allByDept(Id);
     }
 
-    @GetMapping(value = "/{id}/salary/sum")
-    public Collection<Employee> sum(@PathVariable(value = "id") int Id) {
-        return (Collection<Employee>) service.sum(Id);
+  //  @GetMapping(value = "/{id}/salary/sum")
+  //  public Collection<Employee> sum(@PathVariable(value = "id") int Id) {
+  //      return (Collection<Employee>) service.sum(Id);
+  //  }
+
+    @GetMapping(value = "/{id}/salary/max")
+    public Employee max(@PathVariable (value =  "id") int Id) {
+        return service.max(Id);
+    }
+
+    @GetMapping(value = "/{id}/salary/min")
+    public Employee min(@PathVariable (value = "id") int Id) {
+
+        return service.min(Id);
     }
 
 
-    @GetMapping("/max-salary")
-    public Employee max(@RequestParam int departmentId) {
-        return service.max(departmentId);
-    }
 
-    @GetMapping("/min-salary")
-    public Employee min(@RequestParam int departmentId) {
-        return service.min(departmentId);
-    }
-
-
-
-    @GetMapping("/all")
+    @GetMapping("/employees")
     public Map<Integer, List<Employee>> all() {
         return service.all();
     }
