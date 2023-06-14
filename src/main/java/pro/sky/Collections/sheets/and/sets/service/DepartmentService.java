@@ -19,6 +19,15 @@ public class DepartmentService {
       this.employeeService = employeeService;
   }
 
+
+    public int findMaxSalaryForDepartment(Integer department) {
+
+        return employeeService.findAll().stream()
+                .filter(e -> e.getDepartment() == department)
+                .map(e -> e.getSalary())
+                .reduce(Integer::sum).get();
+    }
+
     public Employee max(int dept) {
         return employeeService.getEmployees()
                 .stream()
