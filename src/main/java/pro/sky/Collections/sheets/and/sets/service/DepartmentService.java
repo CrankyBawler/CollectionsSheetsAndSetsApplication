@@ -6,7 +6,6 @@ import pro.sky.Collections.sheets.and.sets.Employee;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.groupingBy;
 
@@ -20,8 +19,7 @@ public class DepartmentService {
   }
 
 
-    public int findMaxSalaryForDepartment(Integer department) {
-
+    public int sum(Integer department) {
         return employeeService.findAll().stream()
                 .filter(e -> e.getDepartment() == department)
                 .map(e -> e.getSalary())
@@ -29,6 +27,7 @@ public class DepartmentService {
     }
 
     public Employee max(int dept) {
+
         return employeeService.getEmployees()
                 .stream()
                 .filter(e -> e.getDepartment() == dept)

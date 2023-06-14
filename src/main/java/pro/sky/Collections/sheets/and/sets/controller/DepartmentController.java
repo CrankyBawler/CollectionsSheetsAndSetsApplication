@@ -2,6 +2,7 @@ package pro.sky.Collections.sheets.and.sets.controller;
 
 import org.springframework.web.bind.annotation.*;
 import pro.sky.Collections.sheets.and.sets.Employee;
+import pro.sky.Collections.sheets.and.sets.service.DataNotTransmittedException;
 import pro.sky.Collections.sheets.and.sets.service.DepartmentService;
 
 import java.util.Collection;
@@ -23,10 +24,10 @@ public class DepartmentController {
         return service.allByDept(Id);
     }
 
-  //  @GetMapping(value = "/{id}/salary/sum")
-  //  public Collection<Employee> sum(@PathVariable(value = "id") int Id) {
-  //      return (Collection<Employee>) service.sum(Id);
-  //  }
+    @GetMapping(value = "/{id}/salary/sum")
+    public int sum(@PathVariable(value = "id") int Id) throws DataNotTransmittedException {
+        return service.sum(Id);
+    }
 
     @GetMapping(value = "/{id}/salary/max")
     public Employee max(@PathVariable (value =  "id") int Id) {

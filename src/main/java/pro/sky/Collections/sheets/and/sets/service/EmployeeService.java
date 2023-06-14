@@ -55,7 +55,7 @@ public class EmployeeService {
                         5, 27_679))));
     }
 
-    public Employee add(String firstName, String lastName, int salary, int department) throws EmployeeStorageIsFullException, EmployeeAlreadyAddedException {
+      public Employee add(String firstName, String lastName, int salary, int department) throws EmployeeStorageIsFullException, EmployeeAlreadyAddedException {
         if (employees.size() > MAX_SIZE) {
             throw new EmployeeStorageIsFullException();
         }
