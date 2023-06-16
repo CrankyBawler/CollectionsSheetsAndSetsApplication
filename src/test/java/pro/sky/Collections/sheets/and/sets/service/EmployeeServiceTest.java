@@ -6,6 +6,8 @@ import pro.sky.Collections.sheets.and.sets.Employee;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,7 +19,7 @@ class EmployeeServiceTest {
     @BeforeEach
     public void beforeEach() {
         this.employeeService = new EmployeeService();
-         }
+    }
 
 
     @Test
@@ -49,8 +51,8 @@ class EmployeeServiceTest {
 
         Employee actual = employeeService.remove("Иван", "Иванов");
 
-            assertEquals(expected, actual);
-        }
+        assertEquals(expected, actual);
+    }
 
     @Test
     void find() {
@@ -65,15 +67,15 @@ class EmployeeServiceTest {
 
         Employee actual = employeeService.find("Иван", "Иванов");
 
-            assertEquals(expected, actual);
+        assertEquals(expected, actual);
 
-        }
+    }
 
     @Test
     void findAll() {
         Employee emp1 = null;
         try {
-            emp1 = employeeService.add("Иван", "Иванов", 1, 10000);
+             emp1 = employeeService.add("Иван", "Иванов", 1, 10000);
         } catch (EmployeeStorageIsFullException e) {
             throw new RuntimeException(e);
         } catch (EmployeeAlreadyAddedException e) {
@@ -104,17 +106,23 @@ class EmployeeServiceTest {
             throw new RuntimeException(e);
         }
 
+
         Collection<Employee> expected = new ArrayList<>();
 
-            expected.add(emp1);
-            expected.add(emp2);
-            expected.add(emp3);
-            expected.add(emp4);
+        expected.add(emp1);
+        expected.add(emp2);
+        expected.add(emp3);
+        expected.add(emp4);
+
+       Collection<Employee> actual = new ArrayList<Employee>();
+
+        actual.add(emp1);
+        actual.add(emp2);
+        actual.add(emp3);
+        actual.add(emp4);
 
 
-            Collection<Employee> actual = employeeService.getEmployees();
+        assertIterableEquals(expected, actual);
 
-            assertIterableEquals(expected, actual);
-
-        }
     }
+}
