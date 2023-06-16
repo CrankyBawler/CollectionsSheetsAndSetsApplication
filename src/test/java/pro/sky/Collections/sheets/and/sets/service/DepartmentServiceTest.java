@@ -35,7 +35,7 @@ class DepartmentServiceTest {
         employees.add(employee2);
         employees.add(employee3);
 
-        Mockito.when(employeeService.getEmployees()).thenReturn(employees);
+        Mockito.when(employeeService.findAll()).thenReturn(employees);
 
         int actual = departmentService.sum(1);
 
