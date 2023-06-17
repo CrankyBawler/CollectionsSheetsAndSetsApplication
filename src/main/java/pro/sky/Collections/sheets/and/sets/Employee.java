@@ -1,14 +1,25 @@
 package pro.sky.Collections.sheets.and.sets;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Objects;
 
-public class Employee {
-    private String firstName;
-    private String lastName;
+import static org.apache.commons.lang3.StringUtils.*;
 
-    public Employee(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+public class Employee {
+
+    private final String firstName;
+    private final String lastName;
+    private final int salary;
+    private final int department;
+
+
+    public Employee(String firstName, String lastName, int department, int salary) {
+        this.firstName = capitalize(firstName.toLowerCase());
+        this.lastName = capitalize(lastName.toLowerCase());
+        this.salary = salary;
+        this.department = department;
+
     }
 
     public String getFirstName() {
@@ -19,17 +30,29 @@ public class Employee {
         return lastName;
     }
 
+    public int getDepartment() {
+        return department;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public String getFullName() {
+        return firstName + " " + lastName ;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
+        return department == employee.department && salary == employee.salary && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName);
+        return Objects.hash(firstName, lastName, department, salary);
     }
 
     @Override
@@ -37,6 +60,8 @@ public class Employee {
         return "Employee{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", department=" + department +
+                ", salary=" + salary +
                 '}';
     }
 }
