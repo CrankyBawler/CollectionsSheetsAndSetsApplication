@@ -107,22 +107,11 @@ class EmployeeServiceTest {
         }
 
 
-        Collection<Employee> expected = new ArrayList<>();
+        assertTrue(employeeService.getEmployees().contains(emp1));
+        assertTrue(employeeService.getEmployees().contains(emp2));
+        assertTrue(employeeService.getEmployees().contains(emp3));
+        assertTrue(employeeService.getEmployees().contains(emp4));
 
-        expected.add(emp1);
-        expected.add(emp2);
-        expected.add(emp3);
-        expected.add(emp4);
-
-       Collection<Employee> actual = new ArrayList<Employee>();
-
-        actual.add(emp1);
-        actual.add(emp2);
-        actual.add(emp3);
-        actual.add(emp4);
-
-
-        assertIterableEquals(expected, actual);
 
     }
 }
